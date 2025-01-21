@@ -9,10 +9,6 @@ export const routes: Routes = [
         component: NavbarComponent
     },
     {
-        path: '',
-        component: BookseatComponent
-    },
-    {
         path: 'available-trips',
         component: AvailableTripsComponent
     }
