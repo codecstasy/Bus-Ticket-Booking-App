@@ -1,0 +1,73 @@
+/* Apply styles to the body to center the content */
+body {
+    display: flex;                         /* Use flexbox */
+    justify-content: center;                /* Center horizontally */
+    align-items: center;                    /* Center vertically */
+    min-height: 100vh;                       /* Use min-height for full viewport height */
+    margin: 0;                              /* Remove default margin */
+    padding: 0;                             /* Remove default padding */
+    background-color: #f0f0f0;              /* Optional: Light background for the page */
+    box-sizing: border-box;                 /* Ensure that padding doesn't affect layout */
+  }
+  
+  /* Container for each trip card */
+  .trip-card {
+    background-color: #f9f9f9;              /* Light background color for the card */
+    border-radius: 8px;                      /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Soft shadow for depth */
+    padding: 20px;                           /* Padding inside the card */
+    margin: 15px 0;                          /* Space between trip cards */
+    width: 300px;                            /* Set a fixed width for consistency */
+    transition: transform 0.2s ease-in-out;   /* Smooth hover effect */
+    text-align: center;                      /* Center align text inside the card */
+  }
+  
+  /* Hover effect for the card */
+  .trip-card:hover {
+    transform: translateY(-5px);             /* Slight lift effect when hovered */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);  /* Darker shadow on hover */
+  }
+  
+  /* Heading style for the trip ID */
+  .trip-card h2 {
+    font-size: 1.5em;                        /* Larger font size for the trip name */
+    color: #333;                             /* Dark text color */
+    margin-bottom: 10px;                     /* Space below the heading */
+  }
+  
+  /* Style for each paragraph inside the card */
+  .trip-card p {
+    font-size: 1em;                          /* Standard font size for text */
+    color: #555;                             /* Slightly lighter color for the text */
+    margin: 8px 0;                           /* Space between paragraphs */
+  }
+  
+  /* Style for the labels (e.g., Origin, Destination) */
+  .trip-card p strong {
+    color: #007bff;                          /* Blue color for labels */
+    font-weight: bold;                       /* Bold font for the labels */
+  }
+  
+  /* Button styles */
+  .trip-card button {
+    background-color: #007bff;               /* Blue background for the button */
+    color: white;                            /* White text color */
+    font-size: 1em;                          /* Standard font size */
+    padding: 10px 20px;                      /* Padding for the button */
+    border: none;                            /* Remove default border */
+    border-radius: 4px;                      /* Rounded corners for the button */
+    cursor: pointer;                         /* Pointer cursor on hover */
+    transition: background-color 0.3s ease;  /* Smooth color change on hover */
+    margin-top: 15px;                        /* Space above the button */
+  }
+  
+  /* Button hover effect */
+  .trip-card button:hover {
+    background-color: #0056b3;               /* Darker blue on hover */
+  }
+  
+  /* Optional: Add some spacing between the button and the other content */
+  .trip-card p:last-child {
+    margin-bottom: 20px;                     /* Ensure some space at the bottom of the card */
+  }
+  
