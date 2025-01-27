@@ -3,6 +3,7 @@ import { AvailableTripsComponent } from './available-trips/available-trips.compo
 import { NavbarComponent } from './navbar/navbar.component';
 import { BookseatComponent } from './bookseat/bookseat.component';
 import { AppComponent } from './app.component';
+import { SelectSeatsComponent } from './select-seats/select-seats.component';
 
 export const routes: Routes = [
     {
@@ -16,5 +17,9 @@ export const routes: Routes = [
     {
         path: 'available-trips',
         component: AvailableTripsComponent
+    },
+    {
+        path: 'select-seats',
+        component: SelectSeatsComponent
     }
 ];
