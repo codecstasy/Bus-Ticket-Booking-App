@@ -1,0 +1,25 @@
+/* Container for all trips */
+.trip-container {
+    display: flex;                /* Use flexbox */
+    flex-direction: column;       /* Stack items vertically */
+    justify-content: center;      /* Center items vertically */
+    align-items: center;          /* Center items horizontally */
+    min-height: 100vh;            /* Full viewport height */
+    background-color: #f0f0f0;    /* Optional: Light background */
+    margin: 0;
+    padding: 0;
+}
+
+/* Individual trip card styles */
+.trip-card {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 15px;
+    width: 300px;
+    transition: transform 0.2s ease-in-out;
+    text-align: center;
+}
+
+/* Other styles remain unchanged */
