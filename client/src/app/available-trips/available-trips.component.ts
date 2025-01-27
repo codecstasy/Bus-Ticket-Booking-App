@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { TripComponent } from './trip/trip.component';
 import { Trip } from '../models/trip.model';
+import { NavbarComponent } from "../navbar/navbar.component";
 
 @Component({
   selector: 'app-available-trips',
