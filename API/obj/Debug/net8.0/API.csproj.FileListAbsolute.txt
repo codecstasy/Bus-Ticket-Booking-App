@@ -5,7 +5,6 @@ D:\Ticket Booking System\API\bin\Debug\net8.0\API.deps.json
 D:\Ticket Booking System\API\bin\Debug\net8.0\API.runtimeconfig.json
 D:\Ticket Booking System\API\bin\Debug\net8.0\API.dll
 D:\Ticket Booking System\API\bin\Debug\net8.0\API.pdb
-D:\Ticket Booking System\API\bin\Debug\net8.0\Microsoft.AspNetCore.OpenApi.dll
 D:\Ticket Booking System\API\bin\Debug\net8.0\Microsoft.OpenApi.dll
 D:\Ticket Booking System\API\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
 D:\Ticket Booking System\API\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
