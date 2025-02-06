@@ -11,7 +11,7 @@
       >
         <option value="" disabled>Select Starting Location</option>
         <ng-container *ngFor="let location of locationData">
-          <option [value]="location.id" [disabled]="location.id === endLocation">
+          <option *ngIf="isEndLocationDifferent(location)" [value]="location.id">
             {{ location.name }}
           </option>
         </ng-container>
@@ -32,7 +32,7 @@
       >
         <option value="" disabled>Select Destination</option>
         <ng-container *ngFor="let location of locationData">
-          <option *ngIf="isStartLocationDifferent(location)" [value]="location.id" [disabled]="location.id === startLocation">
+          <option *ngIf="isStartLocationDifferent(location)" [value]="location.id">
             {{ location.name }}
           </option>
         </ng-container>

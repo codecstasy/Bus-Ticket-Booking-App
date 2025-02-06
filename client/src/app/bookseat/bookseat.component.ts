@@ -69,6 +69,9 @@ onSubmit() {
   isStartLocationDifferent(location: any) {
     return this.tripForm.get('startLocation')?.value !== location.id;
   }
+  isEndLocationDifferent(location: any) {
+    return this.tripForm.get('endLocation')?.value !== location.id;
+  }
   
 
   // Navigation logic when the form is valid

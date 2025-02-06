@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "d:\\WorkSpace\\Ticket Booking System\\API\\API.csproj": {}
+    "/Users/shattikbandyopadhyaa/Documents/SoftwareEngineering/BusTicketBookingSystem/Bus-Ticket-Booking-App/API/API.csproj": {}
   },
   "projects": {
-    "d:\\WorkSpace\\Ticket Booking System\\API\\API.csproj": {
+    "/Users/shattikbandyopadhyaa/Documents/SoftwareEngineering/BusTicketBookingSystem/Bus-Ticket-Booking-App/API/API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\WorkSpace\\Ticket Booking System\\API\\API.csproj",
+        "projectUniqueName": "/Users/shattikbandyopadhyaa/Documents/SoftwareEngineering/BusTicketBookingSystem/Bus-Ticket-Booking-App/API/API.csproj",
         "projectName": "API",
-        "projectPath": "d:\\WorkSpace\\Ticket Booking System\\API\\API.csproj",
-        "packagesPath": "C:\\Users\\shattik\\.nuget\\packages\\",
-        "outputPath": "d:\\WorkSpace\\Ticket Booking System\\API\\obj\\",
+        "projectPath": "/Users/shattikbandyopadhyaa/Documents/SoftwareEngineering/BusTicketBookingSystem/Bus-Ticket-Booking-App/API/API.csproj",
+        "packagesPath": "/Users/shattikbandyopadhyaa/.nuget/packages/",
+        "outputPath": "/Users/shattikbandyopadhyaa/Documents/SoftwareEngineering/BusTicketBookingSystem/Bus-Ticket-Booking-App/API/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\shattik\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/shattikbandyopadhyaa/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -77,7 +75,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.405/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.404/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
