@@ -1,3 +1,4 @@
+using API.Models;
 using API.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -14,10 +15,10 @@ public class LocationController : ControllerBase
         _supabaseService = supabaseService;
     }
     [HttpGet("get-locations")]
-    public async Task<IActionResult> GetLocations()
+    public async Task<List<Location>> GetLocations()
     {
         var locations = await _supabaseService.GetLocationsAsync();
-        return Ok(locations);
+        return locations;
     }
 }
 

@@ -1,16 +1,13 @@
-using System;
 using Postgrest.Models;
 using Postgrest.Attributes;
-using System.Text.Json.Serialization;
+using Newtonsoft.Json;
 
 namespace API.Models;
 
 [Table("locations")] // Maps the class to the "locations" table in Supabase
 public class Location : BaseModel
 {
-        [PrimaryKey("id", false)]
-        [Column("id")] // Maps the "Id" property to the "id" column in the table
-        [JsonIgnore]
+        [PrimaryKey("id")]
         public Guid Id { get; set; }
 
         [Column("name")] // Maps the "Name" property to the "name" column in the table
