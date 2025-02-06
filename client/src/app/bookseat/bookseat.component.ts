@@ -16,11 +16,34 @@ export class BookseatComponent implements OnInit {
   locationData: any[] = [];
   endLocation: string = '';
   startLocation: string = '';
+  tripDate: string = '';
+  minDate: string = '';
+  maxDate: string = '';
 
   ngOnInit(): void {
+    this.setMinMaxDate();
     this.getLocations();
   }
 
+  // For formatting and displaying the correct date format
+  setMinMaxDate() {
+    const today = new Date();
+    const maxDate = new Date();
+    maxDate.setDate(today.getDate() + 14);
+    
+    // Format date to YYYY-MM-DD format for input field (required by HTML input)
+    const formatDate = (date: Date) => {
+      const day = String(date.getDate()).padStart(2, '0');
+      const month = String(date.getMonth() + 1).padStart(2, '0');
+      const year = date.getFullYear();
+      return `${year}-${month}-${day}`;  // HTML date input format
+    };
+    
+    // Set min and max date for HTML date input
+    this.minDate = formatDate(today);
+    this.maxDate = formatDate(maxDate);
+  }
+  
   navigateToSearchTrip(): void {
     this.router.navigate(['/available-trips'])
   }
