@@ -1,17 +1,17 @@
 <div class="container">
-  <form>
+  <form [formGroup]="tripForm" (ngSubmit)="onSubmit()">
     <div class="mb-3">
       <label for="inputFrom" class="form-label">From</label>
       <select
         class="form-control"
         id="startLocation"
-        [(ngModel)]="startLocation"
-        name="startLocation"
+        formControlName="startLocation"
+        required
         *ngIf="locationData && locationData.length > 0"
       >
         <option value="" disabled>Select Starting Location</option>
         <ng-container *ngFor="let location of locationData">
-          <option *ngIf="location.id !== endLocation" [value]="location.id">
+          <option [value]="location.id" [disabled]="location.id === endLocation">
             {{ location.name }}
           </option>
         </ng-container>
@@ -26,13 +26,13 @@
       <select
         class="form-control"
         id="endLocation"
-        [(ngModel)]="endLocation"
-        name="endLocation"
+        formControlName="endLocation"
+        required
         *ngIf="locationData && locationData.length > 0"
       >
         <option value="" disabled>Select Destination</option>
         <ng-container *ngFor="let location of locationData">
-          <option *ngIf="location.id !== startLocation" [value]="location.id">
+          <option *ngIf="isStartLocationDifferent(location)" [value]="location.id" [disabled]="location.id === startLocation">
             {{ location.name }}
           </option>
         </ng-container>
@@ -48,7 +48,8 @@
         type="date"
         class="form-control"
         id="tripDate"
-        [(ngModel)]="tripDate"
+        formControlName="tripDate"
+        required
         [min]="minDate"
         [max]="maxDate"
       />
@@ -57,7 +58,7 @@
     <button
       type="submit"
       class="btn btn-primary"
-      (click)="navigateToSearchTrip()"
+      [disabled]="tripForm.invalid"
     >
       Search Trip
     </button>
