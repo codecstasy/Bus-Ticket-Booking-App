@@ -1,29 +1,58 @@
 <div class="container">
-    <form>
-      <div class="mb-3">
-        <label for="inputFrom" class="form-label">From</label>
-        <select class="form-control" id="startLocation" *ngIf="locationData && locationData.length > 0">
-          <option value="">Select Starting Location</option>
-          <option *ngFor="let location of locationData" [value]="location.id">{{ location.name }}</option>
-        </select>
-        <div *ngIf="!locationData || locationData.lenght === 0" class="form-text">Loading locations...</div>
+  <form>
+    <div class="mb-3">
+      <label for="inputFrom" class="form-label">From</label>
+      <select
+        class="form-control"
+        id="startLocation"
+        [(ngModel)]="startLocation"
+        name="startLocation"
+        *ngIf="locationData && locationData.length > 0"
+      >
+      <option value="">Select Starting Location</option>
+        <ng-container *ngFor="let location of locationData">
+          <option *ngIf="location.id !== endLocation" [value]="location.id">
+            {{ location.name }}
+          </option>
+        </ng-container>
+      </select>
+      <div *ngIf="!locationData || locationData.length === 0" class="form-text">
+        Loading locations...
       </div>
-      
-      <div class="mb-3">
-        <label for="inputTo" class="form-label">To</label>
-        <select class="form-control" id="startLocation" *ngIf="locationData && locationData.length > 0">
-          <option value="">Select Destination</option>
-          <option *ngFor="let location of locationData" [value]="location.id">{{ location.name }}</option>
-        </select>
-        <div *ngIf="!locationData || locationData.lenght === 0" class="form-text">Loading locations...</div>
+    </div>
+
+    <div class="mb-3">
+      <label for="inputTo" class="form-label">To</label>
+      <select
+        class="form-control"
+        id="endLocation"
+        [(ngModel)]="endLocation"
+        name="endLocation"
+        *ngIf="locationData && locationData.length > 0"
+      >
+        <option value="">Select Destination</option>
+        <ng-container *ngFor="let location of locationData">
+          <option *ngIf="location.id !== startLocation" [value]="location.id">
+            {{ location.name }}
+          </option>
+        </ng-container>
+      </select>
+      <div *ngIf="!locationData || locationData.length === 0" class="form-text">
+        Loading locations...
       </div>
-      
-      <div class="mb-3">
-        <label for="date" class="form-label">Date</label>
-        <input type="date" class="form-control" id="tripDate">
-      </div>
-      
-      <button type="submit" class="btn btn-primary" (click)="navigateToSearchTrip()">Search Trip</button>
-    </form>
-  </div>
-  
+    </div>
+
+    <div class="mb-3">
+      <label for="date" class="form-label">Date</label>
+      <input type="date" class="form-control" id="tripDate" />
+    </div>
+
+    <button
+      type="submit"
+      class="btn btn-primary"
+      (click)="navigateToSearchTrip()"
+    >
+      Search Trip
+    </button>
+  </form>
+</div>

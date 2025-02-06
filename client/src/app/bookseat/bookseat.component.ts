@@ -1,18 +1,21 @@
 import { NgFor, NgIf } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-bookseat',
   standalone: true,
-  imports: [NgIf, NgFor],
+  imports: [NgIf, NgFor, FormsModule],
   templateUrl: './bookseat.component.html',
   styleUrl: './bookseat.component.css'
 })
 export class BookseatComponent implements OnInit {
   constructor(private router: Router, private http: HttpClient) {}
-  locationData: any;
+  locationData: any[] = [];
+  endLocation: string = '';
+  startLocation: string = '';
 
   ngOnInit(): void {
     this.getLocations();
