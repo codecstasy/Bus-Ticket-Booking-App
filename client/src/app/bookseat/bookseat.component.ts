@@ -12,26 +12,22 @@ import { Router } from '@angular/router';
   styleUrls: ['./bookseat.component.css']
 })
 export class BookseatComponent implements OnInit {
-onSubmit() {
-  this.navigateToSearchTrip();
-}
-
   // FormGroup to handle the reactive form
   tripForm: FormGroup;
-  
   // Locations fetched from the API
   locationData: any[] = [];
-  
   // Form control bindings
   startLocation: string = '';
   endLocation: string = '';
   tripDate: string = '';
-  
   // Date range settings
   minDate: string = '';
   maxDate: string = '';
 
-  constructor(private router: Router, private http: HttpClient, private formBuilder: FormBuilder) {
+  constructor(
+    private router: Router, 
+    private http: HttpClient, 
+    private formBuilder: FormBuilder) {
     // Initializing form controls with validation
     this.tripForm = this.formBuilder.group({
       startLocation: ['', Validators.required],
@@ -45,6 +41,16 @@ onSubmit() {
     this.setMinMaxDate();
     // Fetch the locations for the dropdown
     this.getLocations();
+  }
+
+  onSubmit() {
+    if (this.tripForm.valid) {
+      // If form is valid, navigate to the available trips page
+      this.router.navigate(['/available-trips']);
+    } else {
+      // Handle invalid form submission
+      console.log('Form is invalid');
+    }
   }
 
   // Format the date into YYYY-MM-DD for the HTML input
@@ -71,18 +77,6 @@ onSubmit() {
   }
   isEndLocationDifferent(location: any) {
     return this.tripForm.get('endLocation')?.value !== location.id;
-  }
-  
-
-  // Navigation logic when the form is valid
-  navigateToSearchTrip(): void {
-    if (this.tripForm.valid) {
-      // If form is valid, navigate to the available trips page
-      this.router.navigate(['/available-trips']);
-    } else {
-      // Handle invalid form submission
-      console.log('Form is invalid');
-    }
   }
 
   // Fetch locations data from the API
