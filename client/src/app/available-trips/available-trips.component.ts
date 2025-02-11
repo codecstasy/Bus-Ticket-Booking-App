@@ -13,13 +13,8 @@ import { query } from '@angular/animations';
   styleUrl: './available-trips.component.css'
 })
 export class AvailableTripsComponent implements OnInit {
-  // trips: Trip[] = [
-  //   new Trip(1, 'Dhaka', 'Mymensingh', new Date('2025-01-30'), '11:10', '3:00', 300),
-  //   new Trip(2, 'Dhaka', 'Sylhet', new Date('2025-01-30'), '11:10', '3:00', 400),
-  //   new Trip(3, 'Dhaka', 'Kishorganj', new Date('2025-01-30'), '11:10', '3:00', 200),
-  //   new Trip(4, 'Dhaka', 'Jamalpur', new Date('2025-01-30'), '11:10', '3:00', 200),
-  //   new Trip(5, 'Dhaka', 'Patuakhlai', new Date('2025-01-30'), '11:10', '3:00', 200)
-  // ]
+  trips: any[] = [];
+  getTripsUrl = "http://localhost:5201/api/trip/get-trips";
 
   constructor(private http: HttpClient, private route: ActivatedRoute) {}
 
@@ -30,20 +25,34 @@ export class AvailableTripsComponent implements OnInit {
   getAvailableTrips() {
     this.route.queryParams.subscribe(params => {
 
-      const startLocation = params['startLocation'];
-      const endLocation = params['endLocation'];
+      const startLocationId = params['startLocation'];
+      const endLocationId = params['endLocation'];
       const tripDate = params['tripDate'];
-  
-      this.http.get<any>("http://localhost:5201/api/trip/get-trips", {params : {
-        startLocation : startLocation,
-        endLocation : endLocation,
-        tripDate : tripDate
-      }})
-      .subscribe({
-        error: err => console.log(err),
-      })
       
-      console.log(params);
+      console.log(`Start Location ID: ${startLocationId}, End Location ID: ${endLocationId}, Trip Date: ${tripDate}`);
+
+      if(!startLocationId || !endLocationId || !tripDate) {
+        console.log("Missing query parameters");
+        return;
+      }
+
+      this.http.get<any[]>(this.getTripsUrl, {
+        params : {
+          startLocationId : startLocationId,
+          endLocationId : endLocationId,
+          tripDate : tripDate
+        }
+      })
+      .subscribe({
+        next: (response) => {
+          console.log("Trips received:", response);
+          this.trips = response;
+        },
+        error: (err) => {
+          console.error("Error fetching trips:", err);
+          this.trips = [];
+        }
+      });
     });
   }
 }
