@@ -27,8 +27,19 @@ public class SupabaseService
 
     public async Task<List<Location>> GetLocationsAsync()
     {
-        var response = await _supabase.From<Location>().Get();
-        Console.WriteLine($"Returned {response.Models.Count} locations");
-        return response.Models;
+        try {
+            var response = await _supabase
+            .From<Location>()
+            // .Filter("is_active", Postgrest.Constants.Operator.Equals, true)
+            .Get();
+            
+            
+            Console.WriteLine($"Returned {response.Models.Count} locations");
+            
+            return response.Models ?? new List<Location>();
+        } catch(Exception ex) {
+            Console.WriteLine($"Error fetching locations: {ex.Message}");
+            return new List<Location>();
+        }
     }
 }

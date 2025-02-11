@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Http;
+using API.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers;
@@ -7,10 +7,16 @@ namespace API.Controllers;
 [ApiController]
 public class TripController : ControllerBase
 {
-    [HttpGet("get-trips")]
-    public ActionResult<string> GetTrips()
+    private readonly SupabaseService _supabaseService;
+    public TripController(SupabaseService supabaseService)
     {
-        return "Dummy trip";
+        _supabaseService = supabaseService;
+    }
+
+    [HttpGet("get-trips")]
+    public async Task<string> GetTrips()
+    {
+        return "Not Implemented"; // Not implemented yet
     }
 }
 

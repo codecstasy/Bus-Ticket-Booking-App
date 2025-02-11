@@ -12,23 +12,22 @@ import { Router } from '@angular/router';
   styleUrls: ['./bookseat.component.css']
 })
 export class BookseatComponent implements OnInit {
-  // FormGroup to handle the reactive form
+  onSubmit() {
+    this.navigateToSearchTrip();
+  }
+
   tripForm: FormGroup;
-  // Locations fetched from the API
+
   locationData: any[] = [];
-  // Form control bindings
+
   startLocation: string = '';
   endLocation: string = '';
   tripDate: string = '';
-  // Date range settings
+
   minDate: string = '';
   maxDate: string = '';
 
-  constructor(
-    private router: Router, 
-    private http: HttpClient, 
-    private formBuilder: FormBuilder) {
-    // Initializing form controls with validation
+  constructor(private router: Router, private http: HttpClient, private formBuilder: FormBuilder) {
     this.tripForm = this.formBuilder.group({
       startLocation: ['', Validators.required],
       endLocation: ['', Validators.required],
@@ -37,37 +36,22 @@ export class BookseatComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // Set the date range (min and max dates)
     this.setMinMaxDate();
-    // Fetch the locations for the dropdown
     this.getLocations();
   }
 
-  onSubmit() {
-    if (this.tripForm.valid) {
-      // If form is valid, navigate to the available trips page
-      this.router.navigate(['/available-trips']);
-    } else {
-      // Handle invalid form submission
-      console.log('Form is invalid');
-    }
-  }
-
-  // Format the date into YYYY-MM-DD for the HTML input
+  // Format the date into YYYY-MM-DD
   private setMinMaxDate(): void {
     const today = new Date();
     const maxDate = new Date();
-    maxDate.setDate(today.getDate() + 14);  // Set max date to 14 days from today
+    maxDate.setDate(today.getDate() + 14);
 
-    // Helper function to format dates correctly
     const formatDate = (date: Date): string => {
       const day = String(date.getDate()).padStart(2, '0');
       const month = String(date.getMonth() + 1).padStart(2, '0');
       const year = date.getFullYear();
       return `${year}-${month}-${day}`;
     };
-
-    // Set the minimum and maximum dates for the form
     this.minDate = formatDate(today);
     this.maxDate = formatDate(maxDate);
   }
@@ -75,19 +59,30 @@ export class BookseatComponent implements OnInit {
   isStartLocationDifferent(location: any) {
     return this.tripForm.get('startLocation')?.value !== location.id;
   }
-  isEndLocationDifferent(location: any) {
-    return this.tripForm.get('endLocation')?.value !== location.id;
+
+
+  navigateToSearchTrip(): void {
+    if (this.tripForm.valid) {
+      this.router.navigate(['/available-trips'], {
+        queryParams: {
+          startLocation: this.tripForm.value.startLocation, 
+          endLocation: this.tripForm.value.endLocation,
+          tripDate: this.tripForm.value.tripDate
+        }
+      });
+    } else {
+      console.log('Form is invalid');
+    }
   }
 
-  // Fetch locations data from the API
   private getLocations(): void {
     this.http.get<any>("http://localhost:5201/api/location/get-locations")
       .subscribe({
         next: (response) => {
-          this.locationData = response; // Store location data
+          this.locationData = response;
         },
         error: (error) => {
-          console.error('Error fetching data:', error); // Handle errors gracefully
+          console.error('Error fetching data:', error);
         }
       });
   }
