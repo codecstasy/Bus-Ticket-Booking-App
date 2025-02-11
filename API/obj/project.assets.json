@@ -1257,11 +1257,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\WorkSpace\\Ticket Booking System\\API\\API.csproj",
+      "projectUniqueName": "D:\\WorkSpace\\Bus-Ticket-Booking-App\\API\\API.csproj",
       "projectName": "API",
-      "projectPath": "D:\\WorkSpace\\Ticket Booking System\\API\\API.csproj",
+      "projectPath": "D:\\WorkSpace\\Bus-Ticket-Booking-App\\API\\API.csproj",
       "packagesPath": "C:\\Users\\shattik\\.nuget\\packages\\",
-      "outputPath": "D:\\WorkSpace\\Ticket Booking System\\API\\obj\\",
+      "outputPath": "D:\\WorkSpace\\Bus-Ticket-Booking-App\\API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\shattik\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -1284,6 +1284,11 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
