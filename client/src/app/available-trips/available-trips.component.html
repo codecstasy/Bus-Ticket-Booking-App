@@ -1,7 +1,9 @@
 <div class="trip-container">
-@for (trip of trips; track $index) {
-    <div>
-        <app-trip [trip]="trip"></app-trip>
-    </div>
-}
+    <button (click)="goToHomePage()">Modify Search</button>
+    <div *ngIf="!trips || trips.length === 0" class="no-trips-message">Sorry! No trip available!!</div>
+    @for (trip of trips; track $index) {
+        <div class="trip">
+            <app-trip [trip]="trip"></app-trip>
+        </div>
+    }
 </div>
