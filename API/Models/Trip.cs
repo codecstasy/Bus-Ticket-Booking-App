@@ -3,17 +3,17 @@ using Postgrest.Attributes;
 
 namespace API.Models;
 
-[Table("trips")]
+[Table("trip_locations_view")]
 public class Trip : BaseModel
 {
     [PrimaryKey("id")]
     public Guid Id { get; set; }
 
-    [Column("departure_location_id")]
-    public string DepartureLocationId { get; set; } = string.Empty;
+    [Column("departure_location")]
+    public string DepartureLocation { get; set; } = string.Empty;
 
-    [Column("destination_location_id")]
-    public string DestinationLocationId { get; set; } = string.Empty;
+    [Column("destination_location")]
+    public string DestinationLocation { get; set; } = string.Empty;
 
     [Column("departure_time")]
     public TimeOnly DepartureTime { get; set; }

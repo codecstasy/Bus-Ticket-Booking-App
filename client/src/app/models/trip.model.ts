@@ -1,7 +1,7 @@
 export class Trip {
     id: string;
-    departureLocationId: string;
-    destinationLocationId: string;
+    departureLocation: string;
+    destinationLocation: string;
     journeyDate: Date; // Updated to Date
     departureTime: string;
     arrivalTime: string;
@@ -9,16 +9,16 @@ export class Trip {
 
     constructor(
         id: string, 
-        departureLocationId: string, 
-        destinationLocationId: string, 
+        departureLocation: string, 
+        destinationLocation: string, 
         journeyDate: Date, // Updated here as well
         departureTime: string, 
         arrivalTime: string, 
         fare: number
     ) {
         this.id = id;
-        this.departureLocationId = departureLocationId;
-        this.destinationLocationId = destinationLocationId;
+        this.departureLocation = departureLocation;
+        this.destinationLocation = destinationLocation;
         this.journeyDate = journeyDate;
         this.departureTime = departureTime;
         this.arrivalTime = arrivalTime;

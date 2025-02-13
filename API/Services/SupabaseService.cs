@@ -82,6 +82,4 @@ public class SupabaseService
             return new List<Trip>();
         }
     }
-
-
 }

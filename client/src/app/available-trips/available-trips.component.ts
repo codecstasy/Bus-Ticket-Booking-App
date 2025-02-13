@@ -47,8 +47,8 @@ export class AvailableTripsComponent implements OnInit {
           console.log("Trips received:", response);
           this.trips = response.map(trip => new Trip (
             trip.id,
-            trip.departureLocationId,
-            trip.destinationLocationId,
+            trip.departureLocation,
+            trip.destinationLocation,
             tripDate,
             trip.departureTime,
             trip.arrivalTime,
