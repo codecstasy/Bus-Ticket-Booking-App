@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { ActivatedRoute } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Trip } from '../models/trip.model';
 import { TripComponent } from "./trip/trip.component";
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-available-trips',
   standalone: true,
-  imports: [TripComponent],
+  imports: [TripComponent, NgIf],
   templateUrl: './available-trips.component.html',
   styleUrl: './available-trips.component.css'
 })
@@ -15,10 +16,14 @@ export class AvailableTripsComponent implements OnInit {
   trips: any[] = [];
   getTripsUrl = "http://localhost:5201/api/trip/get-trips";
 
-  constructor(private http: HttpClient, private route: ActivatedRoute) {}
+  constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit() {
     this.getAvailableTrips();
+  }
+
+  goToHomePage() {
+    this.router.navigate(['/book-seat']);
   }
 
   getAvailableTrips() {
