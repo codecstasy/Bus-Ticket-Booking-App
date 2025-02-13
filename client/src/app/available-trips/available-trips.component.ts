@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { TripComponent } from './trip/trip.component';
-import { Trip } from '../models/trip.model';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
-import { query } from '@angular/animations';
+import { Trip } from '../models/trip.model';
+import { TripComponent } from "./trip/trip.component";
 
 @Component({
   selector: 'app-available-trips',
@@ -46,7 +45,15 @@ export class AvailableTripsComponent implements OnInit {
       .subscribe({
         next: (response) => {
           console.log("Trips received:", response);
-          this.trips = response;
+          this.trips = response.map(trip => new Trip (
+            trip.id,
+            trip.departureLocation,
+            trip.destinationLocation,
+            tripDate,
+            trip.departureTime,
+            trip.arrivalTime,
+            trip.fare
+          ));
         },
         error: (err) => {
           console.error("Error fetching trips:", err);

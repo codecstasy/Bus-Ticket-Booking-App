@@ -22,3 +22,7 @@ body, html {
     background-color: #f9f9f9; /* Optional: Add a background color to the form */
   }
   
+  input.ng-invalid.ng-touched,
+  select.ng-invalid.ng-touched{
+    border:red 2px solid;
+  }

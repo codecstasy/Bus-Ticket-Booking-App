@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 })
 export class BookseatComponent implements OnInit {
   onSubmit() {
+    console.log(this.tripForm);
     this.navigateToSearchTrip();
   }
 
