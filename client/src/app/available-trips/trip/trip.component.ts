@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Trip } from '../../models/trip.model';
 import { Router, RouterOutlet } from '@angular/router';
+import { Bus } from '../../models/bus.model';
 
 @Component({
   selector: 'app-trip',
@@ -14,6 +15,12 @@ export class TripComponent {
 
   @Input()
   trip!: Trip;
+
+  bus!: Bus;
+
+  selectBus(): void {
+    
+  }
 
   navigateToSelectSeats() {
     this.router.navigate(['/select-seats'])

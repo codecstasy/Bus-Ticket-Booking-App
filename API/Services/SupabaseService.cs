@@ -5,6 +5,7 @@ using Postgrest.Models;
 using Supabase;
 using Supabase.Interfaces;
 using System.Collections.Generic;
+using System.Reflection.Metadata.Ecma335;
 using System.Threading.Tasks;
 
 namespace API.Services;
@@ -80,6 +81,20 @@ public class SupabaseService
         {
             Console.WriteLine($"Error fetching trips: {ex.Message}");
             return new List<Trip>();
+        }
+    }
+
+    public async Task<Bus> getBusDataAsync(int id) {
+        try {
+            var response = await _supabase
+            .From<Bus>()
+            .Filter("id", Postgrest.Constants.Operator.Equals, id)
+            .Get();
+
+            return response.Models.FirstOrDefault();
+        } catch (Exception ex) {
+            Console.WriteLine($"Error fetching Bus Data: {ex.Message}");
+            return new Bus();
         }
     }
 }

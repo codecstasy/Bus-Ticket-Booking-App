@@ -8,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './select-seats.component.css'
 })
 export class SelectSeatsComponent {
-
+  
 }
