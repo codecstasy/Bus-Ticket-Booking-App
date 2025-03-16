@@ -1,0 +1,12 @@
+<div class="bus-container">
+    <div class="seats">
+      <div 
+        *ngFor="let seat of seats; let i = index"
+        class="seat"
+        [class.selected]="seat"
+        (click)="toggleSeat(i)">
+        {{ i + 1 }}
+      </div>
+    </div>
+  </div>
+  
